@@ -2,6 +2,7 @@ package telran.java53.person.service;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import telran.java53.person.dao.PersonRepository;
@@ -11,6 +12,7 @@ import telran.java53.person.dto.PersonDto;
 import telran.java53.person.dto.exception.PersonNotFoundException;
 import telran.java53.person.model.Person;
 
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class PersonServiceImpl implements PersonService {
@@ -46,13 +48,14 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public PersonDto updatePersoneName(Integer id, String name) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
+
 	@Override
 	public PersonDto updatePersoneAddress(Integer id, AddressDto addressDto) {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 

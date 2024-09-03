@@ -3,7 +3,6 @@ package telran.java53.person.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
