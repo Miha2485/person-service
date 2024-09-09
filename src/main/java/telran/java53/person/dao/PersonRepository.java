@@ -1,7 +1,6 @@
 package telran.java53.person.dao;
 
 import java.time.LocalDate;
-import java.util.Set;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -10,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import telran.java53.person.dto.CityPopulationDto;
+import telran.java53.person.model.Child;
+import telran.java53.person.model.Employee;
 import telran.java53.person.model.Person;
 
 public interface PersonRepository extends JpaRepository<Person, Integer> {
@@ -31,6 +32,10 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
 //	List<Object[]> getCityPopulation();
 
 	@Query("select new telran.java53.person.dto.CityPopulationDto(p.address.city, count(p)) from Citizen p group by p.address.city order by count(p) desc")
-	List<CityPopulationDto> getCityPopulation();
+	List<CityPopulationDto> getCitiesPopulation();
+
+	Stream<Employee> findBySalaryBetween(int min, int max);
+
+	Stream<Child> findChildrenBy();
 
 }
