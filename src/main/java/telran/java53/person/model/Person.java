@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -12,24 +14,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @EqualsAndHashCode(of = "id")
-@Entity
+@Entity(name = "Citizen")
 @Table(name = "persons")
+@Inheritance(strategy = InheritanceType.JOINED)
+
 public class Person implements Serializable {
-    private static final long serialVersionUID = -2812010942738675155L;
-
-    @Id
-    Integer id;
-
-    @Setter
-    String name;
-
-    LocalDate birthDate;
-
-    @Setter
-//    @Embedded
-    Address address;
+	private static final long serialVersionUID = -2812010942738675155L;
+	@Id
+	Integer id;
+	@Setter
+	String name;
+	LocalDate birthDate;
+	@Setter
+//	@Embedded
+	Address address;
 }

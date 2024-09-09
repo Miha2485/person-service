@@ -38,12 +38,12 @@ public class PersonController {
 
     @PutMapping("/{id}/name/{name}")
     public PersonDto updatePersoneName(@PathVariable Integer id, @PathVariable String name) {
-        return personService.updatePersoneName(id, name);
+        return personService.updatePersonName(id, name);
     }
 
     @PutMapping("/{id}/address")
     public PersonDto updatePersoneAddress(@PathVariable Integer id, @RequestBody AddressDto addressDto) {
-        return personService.updatePersoneAddress(id, addressDto);
+        return personService.updatePersonAddress(id, addressDto);
     }
 
     @GetMapping("/city/{city}")

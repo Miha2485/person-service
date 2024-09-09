@@ -11,9 +11,9 @@ public interface PersonService {
 
 	PersonDto removePerson(Integer id);
 
-	PersonDto updatePersoneName(Integer id, String name);
+	PersonDto updatePersonName(Integer id, String name);
 
-	PersonDto updatePersoneAddress(Integer id, AddressDto addressDto);
+	PersonDto updatePersonAddress(Integer id, AddressDto addressDto);
 	
 	PersonDto[] findPersonByCity(String city);
 	
@@ -22,4 +22,5 @@ public interface PersonService {
 	PersonDto[] findPersonBetweenAge(Integer minAge, Integer maxAge);
 	
 	Iterable<CityPopulationDto> getCitiesPopulation();
+
 }
