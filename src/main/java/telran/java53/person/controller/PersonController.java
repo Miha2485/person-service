@@ -19,69 +19,52 @@ import telran.java53.person.service.PersonService;
 @RequestMapping("/person")
 @RequiredArgsConstructor
 public class PersonController {
-	final PersonService personService;
+    final PersonService personService;
 
+    @PostMapping
+    public Boolean addPesron(@RequestBody PersonDto personDto) {
+        return personService.addPerson(personDto);
+    }
 
-	@PostMapping
-	public Boolean addPesron(@RequestBody PersonDto personDto) {
-		return personService.addPerson(personDto);
-	}
+    @GetMapping("/{id}")
+    public PersonDto findPersonById(@PathVariable Integer id) {
+        return personService.findPersonById(id);
+    }
 
+    @DeleteMapping("/{id}")
+    public PersonDto removePerson(@PathVariable Integer id) {
+        return personService.removePerson(id);
+    }
 
-	@GetMapping("/{id}")
-	public PersonDto findPersonById(@PathVariable Integer id) {
-		return personService.findPersonById(id);
-	}
+    @PutMapping("/{id}/name/{name}")
+    public PersonDto updatePersoneName(@PathVariable Integer id, @PathVariable String name) {
+        return personService.updatePersonName(id, name);
+    }
 
+    @PutMapping("/{id}/address")
+    public PersonDto updatePersoneAddress(@PathVariable Integer id, @RequestBody AddressDto addressDto) {
+        return personService.updatePersonAddress(id, addressDto);
+    }
 
-	@DeleteMapping("/{id}")
-	public PersonDto removePerson(@PathVariable Integer id) {
-		return personService.removePerson(id);
-	}
+    @GetMapping("/city/{city}")
+    public PersonDto[] findPersonByCity(@PathVariable String city) {
+        return personService.findPersonByCity(city);
+    }
 
+    @GetMapping("/name/{name}")
+    public PersonDto[] findPersonByName(@PathVariable String name) {
+        return personService.findPersonByName(name);
+    }
 
-	@PutMapping("/{id}/name/{name}")
-	public PersonDto updatePersonName(@PathVariable Integer id, @PathVariable String name) {
-		return personService.updatePersonName(id, name);
-	}
+    @GetMapping("/ages/{min}/{max}")
+    public PersonDto[] findPersonBetweenAge(@PathVariable Integer min, @PathVariable Integer max) {
+        return personService.findPersonBetweenAge(min, max);
+    }
 
-
-	@PutMapping("/{id}/address")
-	public PersonDto updatePersonAddress(@PathVariable Integer id, @RequestBody AddressDto addressDto) {
-		return personService.updatePersonAddress(id, addressDto);
-	}
-
-
-	@GetMapping("/name/{name}")
-	public Iterable<PersonDto> findByName(@PathVariable String name) {
-		return personService.findPersonByName(name);
-	}
-
-
-	@GetMapping("/city/{city}")
-	public Iterable<PersonDto> findByCity(@PathVariable String city) {
-		return personService.findPersonByCity(city);
-	}
-
-
-	@GetMapping("/ages/{min}/{max}")
-	public Iterable<PersonDto> findPersonsBetweenAge(@PathVariable Integer min, @PathVariable Integer max) {
-		return personService.findPersonBetweenAge(min, max);
-	}
-
-
-	@GetMapping("/population/city")
-	public Iterable<CityPopulationDto> getCitiesPopulation() {
-		return personService.getCitiesPopulation();
-	}
-	
-	@GetMapping("/salary/{min}/{max}")
-	public Iterable<PersonDto> findEmployeeBySalary(@PathVariable Integer min, @PathVariable Integer max) {
-		return personService.findEmployeeBySalary(min, max);
-	}
-	
-	@GetMapping("/children")
-	public Iterable<PersonDto> findAllChildren() {
-		return personService.getChildren();
-	}
+    @GetMapping("/population/city")
+    public Iterable<CityPopulationDto> getCitiesPopulation() {
+        return personService.getCitiesPopulation();
+    }
 }
+
+
